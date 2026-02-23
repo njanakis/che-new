@@ -118,6 +118,7 @@
         <div id="appsMenu" class="dropdown-content">
             <a href="#" onclick="goToGeneralForm('cheruta')">Червона Рута</a>
             <a href="#" onclick="goToGeneralForm('we-from-ukraine')">Конкурс читців</a>
+            <a href="#" onclick="goToGeneralForm('main')">Фестиваль В.Авраменка</a>
             <a href="#" onclick="goToGeneralForm('main')">Загальна заявка</a>
         </div>
     </div>
@@ -267,6 +268,9 @@ function handleAuthClick() {
     } 
     else if (type === 'main' || type === 'zajavka') {
         url = `https://n8n.narodocnt.online/webhook/main-zajavka/n8n-form?name=${userName}`;
+    }
+         else if (type === 'main' || type === 'avram') {
+        url = `https://n8n.narodocnt.online/webhook/avram/n8n-form?name=${userName}`;
     }
     else {
         // Універсальний варіант для коротких назв
