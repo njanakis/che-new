@@ -135,20 +135,25 @@
 <div class="ruta-container" style="position: relative; width: 100%; overflow: hidden;">
     <img src="cheruta.jpg" alt="Червона Рута" style="width: 100%; display: block;">
     
-    <div id="ruta-ui-layer" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; box-sizing: border-box; z-index: 100;">
-        
-        <div style="flex: 1;"></div>
-
-        <div id="ruta-timer-display" style="display: flex; gap: 4px; color: #f1c40f; flex: 1; justify-content: center; font-family: monospace; font-size: 20px; font-weight: bold; text-shadow: 1px 1px 2px black;">
-            <span id="d-val">00</span>:<span id="h-val">00</span>:<span id="m-val">00</span>:<span id="s-val">00</span>
+   <div id="ruta-ui-layer" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; box-sizing: border-box; z-index: 100;">
+    
+    <div class="dropdown" style="flex: 1;">
+        <button class="nav-btn dropdown-toggle" onclick="toggleDropdown('rutaDocsMenu')" style="font-size: 11px; padding: 5px 10px; height: auto;">ПОЛОЖЕННЯ ▼</button>
+        <div id="rutaDocsMenu" class="dropdown-content">
+            <a href="Polozhennya_chit_2026.pdf" target="_blank">Конкурс читців 2026</a>
+            <a href="polozhennya_avram.pdf" target="_blank">Фестиваль В.Авраменка</a>
         </div>
+    </div>
 
-        <div style="flex: 1; display: flex; justify-content: flex-end;">
-            <button onclick="goToGeneralForm('cheruta')" 
-                style="background: #ff4500; border: none; color: white; padding: 8px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 10px rgba(255,69,0,0.3);">
-                ЗАЯВКА
-            </button>
-        </div>
+    <div id="ruta-timer-display" style="display: flex; gap: 4px; color: #f1c40f; flex: 2; justify-content: center; font-family: monospace; font-size: 20px; font-weight: bold; text-shadow: 1px 1px 2px black;">
+        <span id="d-val">00</span>:<span id="h-val">00</span>:<span id="m-val">00</span>:<span id="s-val">00</span>
+    </div>
+
+    <div style="flex: 1; display: flex; justify-content: flex-end;">
+        <button onclick="goToGeneralForm('cheruta')" 
+            style="background: #ff4500; border: none; color: white; padding: 8px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 10px rgba(255,69,0,0.3);">
+            ЗАЯВКА
+        </button>
     </div>
 </div>
 
