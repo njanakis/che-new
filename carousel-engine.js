@@ -31,17 +31,28 @@ async function initCarousel() {
         });
 
         // Запуск Swiper
-        new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            breakpoints: {
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
+       const swiper = new Swiper('.swiper-container', {
+    effect: 'coverflow', // Вмикаємо 3D ефект
+    grabCursor: true,
+    centeredSlides: true, // Центральна картка завжди посередині
+    slidesPerView: 'auto', // Автоматична ширина для ефекту
+    coverflowEffect: {
+        rotate: 30,      // Кут повороту бокових карток
+        stretch: 0,      // Відстань між картками (0 - оптимально)
+        depth: 200,      // Глибина (чим більше, тим менші бокові картки)
+        modifier: 1,     // Множник ефекту
+        slideShadows: true, // Тіні на бокових картках для об'єму
+    },
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+});
     } catch (error) {
         console.error("Помилка завантаження даних:", error);
     }
