@@ -427,15 +427,53 @@
     text-transform: uppercase;
 }
 
-.carousel-box { padding: 40px 20px; background: #f9f9f9; }
-.collective-card { 
-    background: #fff; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-    overflow: hidden; 
-    height: 100%;
+/* Контейнер каруселі */
+.swiper-container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    perspective: 1200px; /* Додає глибину простору */
 }
-.collective-card img { width: 100%; height: 200px; object-fit: cover; }
-.card-content { padding: 15px; }
-.card-content h3 { font-size: 1.1rem; color: #d32f2f; margin-bottom: 10px; }
-.card-content p { font-size: 0.85rem; margin: 5px 0; color: #555; }
+
+/* Розмір слайда (картки) */
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 450px; /* Ширина центральної картки */
+    height: auto;
+    filter: blur(1px); /* Легке розмиття для тих, що не в центрі */
+    transition: 0.3s;
+}
+
+/* Стиль саме активної (центральної) картки */
+.swiper-slide-active {
+    filter: blur(0); /* Чітке фото в центрі */
+    transform: scale(1.1); /* Трішки збільшуємо центральну */
+    z-index: 10;
+}
+
+.collective-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.collective-card img {
+    width: 100%;
+    height: 300px; /* Високе велике фото */
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 30px;
+    background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+}
+
+.card-content h3 {
+    color: #d32f2f;
+    font-size: 1.5rem; /* Великий заголовок */
+    margin-bottom: 15px;
+    text-align: center;
+}
