@@ -556,3 +556,24 @@
     background: rgba(255, 255, 255, 0.4); /* На мобільних трохи чіткіше */
   }
 }
+
+/* Робимо стрілочки меншими */
+.swiper-button-next, .swiper-button-prev {
+    width: 30px !important;
+    height: 30px !important;
+    background-color: rgba(255, 255, 255, 0.3); /* Напівпрозорі */
+    border-radius: 50%;
+}
+
+/* Зменшуємо розмір самої іконки всередині */
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 14px !important;
+    font-weight: bold;
+    color: #000;
+}
+
+/* На мобільних зміщуємо їх ближче до країв */
+@media (max-width: 600px) {
+    .swiper-button-next { right: 5px !important; }
+    .swiper-button-prev { left: 5px !important; }
+}
