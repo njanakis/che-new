@@ -8,30 +8,27 @@
 }
 
 /* 2. Секція рейтингу та карток (Битва) */
-.ranking-section { 
-    max-width: 800px; /* Обмежуємо загальну ширину списку */
-    margin: 30px auto; 
-    padding: 20px;
-}
-
+/* Основна картка Битви */
 .battle-card {
-    display: flex; 
-    background: white; 
-    margin-bottom: 15px;
-    border-radius: 12px; 
-    overflow: hidden; 
-    height: 120px; /* Фіксована висота для ПК */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    display: flex;
+    background: white;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 110px; /* Фіксована висота, щоб не роз'їжджалися */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     border: 1px solid #eee;
     transition: transform 0.2s;
-    width: 100%; /* Картка займає всю ширину контейнера .ranking-section */
+    width: 100%;
+    max-width: 900px; /* Щоб не була на весь екран */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Фото зліва — тепер воно не буде розтягуватися */
+/* Фото зліва */
 .card-left {
-    width: 160px; /* Фіксована ширина фото */
-    height: 100%;
-    flex-shrink: 0; /* Забороняємо стискати фото */
+    width: 140px;
+    flex-shrink: 0;
     position: relative;
 }
 
@@ -41,39 +38,95 @@
     object-fit: cover;
 }
 
-/* Права частина з текстом */
+/* Права частина з контентом */
 .card-right {
     flex-grow: 1;
-    padding: 10px 15px;
+    padding: 8px 15px;
     display: flex;
-    flex-direction: row; /* Текст і зірка в один рядок */
-    align-items: center;
-    justify-content: space-between;
+    align-items: center; /* Вирівнювання по центру по вертикалі */
+    justify-content: space-between; /* Розносимо текст та формулу */
     min-width: 0;
 }
 
+/* Блок з назвою та громадою */
 .card-info-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-grow: 1;
+    text-align: left;
+    flex: 1;
 }
 
-/* Вертикальна кнопка голосування */
+.location-label {
+    font-size: 11px;
+    color: #e67e22;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.collective-name {
+    font-size: 15px;
+    color: #2c3e50;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.leader-name {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-top: 3px;
+}
+
+/* Формула (лайки + коменти) */
+.stats-formula {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #444;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Зірка з балом */
+.star-rating-container {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.total-score-value {
+    position: relative;
+    z-index: 2;
+    font-weight: 900;
+    font-size: 16px;
+    color: #000;
+}
+
+/* Кнопка голосування */
 .vote-link {
-    width: 40px;
     background: #e67e22;
     color: white !important;
     text-decoration: none;
     writing-mode: vertical-rl;
     text-orientation: mixed;
+    padding: 0 12px;
     font-size: 11px;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    flex-shrink: 0;
 }
 
 /* 3. Стилі 3D Каруселі (Swiper) */
@@ -236,3 +289,32 @@ nav.main-nav {
     white-space: nowrap;     /* Забороняємо тексту розриватися */
 }
 
+@media (max-width: 600px) {
+    .battle-card {
+        height: auto; /* На мобілці дозволяємо розширюватися */
+        min-height: 100px;
+    }
+    
+    .card-left {
+        width: 100px;
+    }
+    
+    .card-right {
+        flex-direction: column; /* Текст зверху, статика знизу */
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .stats-formula {
+        padding: 5px 0;
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .star-rating-container {
+        position: absolute;
+        right: 45px; /* Місце біля кнопки голосування */
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
