@@ -31,26 +31,25 @@ async function initCarousel() {
         });
 
         // Запуск Swiper
-     // Запуск Swiper
-const swiper = new Swiper('.swiper-container', {
+   const swiper = new Swiper('.swiper-container', {
     effect: 'coverflow',
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
     loop: true,
+    initialSlide: 2, // Починаємо з середини
 
-    // 1. Додаємо автоплей
     autoplay: {
-        delay: 3000, // Гортати кожні 3 секунди
-        disableOnInteraction: false, // НЕ вимикати назовсім після кліку
+        delay: 3000,
+        disableOnInteraction: false,
     },
 
     coverflowEffect: {
-        rotate: 20,
-        stretch: 50,
-        depth: 300,
-        modifier: 1,
-        slideShadows: true,
+        rotate: 35,      // КУТ ПОВОРОТУ: саме він робить один край вужчим за інший
+        stretch: 10,     // Відстань між слайдами (чим менше, тим ближче вони один до одного)
+        depth: 250,      // ГЛИБИНА: наскільки сильно бокові слайди відсуваються назад
+        modifier: 1,     // Множник ефекту
+        slideShadows: true, // Тіні додають 3D об'єму
     },
 
     navigation: {
