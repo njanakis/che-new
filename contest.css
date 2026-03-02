@@ -78,36 +78,50 @@
 
 /* 3. Стилі 3D Каруселі (Swiper) */
 /* Контейнер повинен мати "глибину" */
+/* Контейнер каруселі - посилена перспектива */
 .swiper-container {
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
-    perspective: 1200px; /* Чим більше число, тим м'якша перспектива */
+    perspective: 1800px; /* Чим менше число, тим сильніший 3D ефект */
 }
 
+/* Слайд каруселі - тепер ми застосовуємо трансформацію до всього слайда */
 .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 450px !important; /* Ширина центральної картки */
-    height: auto;
-    /* Важливо прибрати зайві трансформації, щоб не заважати Swiper */
+    width: 450px !important; 
+    transition: transform 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Картка колективу */
 .collective-card {
     background: #fff;
     border-radius: 12px;
-    border: 5px solid white; /* Біла рамка як на скріншоті */
+    border: 5px solid white; 
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     overflow: hidden;
-    transition: transform 0.3s;
+    width: 100%; /* Картка займає всю ширину слайда */
+    height: 100%; /* Картка займає всю висоту слайда */
 }
 
+/* Фото в картці */
 .collective-card img {
     width: 100%;
-    height: 300px;
+    height: 280px; /* Висота фото */
     object-fit: cover;
     display: block;
 }
+
+/* Контент картки (текст) */
+.card-content {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-content h3 { margin: 0; font-size: 1.2rem; color: #2f3640; }
+.card-content p { margin: 5px 0 0; font-size: 0.9rem; color: #7f8c8d; }
 
 .swiper-slide-active .collective-card {
     transform: scale(1.1);
