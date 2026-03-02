@@ -513,3 +513,46 @@
   transform: rotateY(-45deg) scale(0.8);
   z-index: 1;
 }
+
+/* Контейнер для позиціонування стрілок */
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2); /* Ледь помітні */
+  color: white;
+  border: none;
+  width: 35px; /* Маленький розмір */
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+  transition: 0.3s;
+  font-size: 18px;
+}
+
+.nav-btn:hover { background: rgba(255, 255, 255, 0.5); }
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Адаптація для мобільних */
+@media (max-width: 600px) {
+  .carousel-item {
+    width: 200px; /* Зменшуємо картинки на телефонах */
+    height: 120px;
+    margin: 0 -60px;
+  }
+  .nav-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.4); /* На мобільних трохи чіткіше */
+  }
+}
