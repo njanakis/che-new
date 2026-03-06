@@ -160,20 +160,38 @@
 
       function openUrl(url) {
     if (url.startsWith('https://')) {
-        // 1. Отримуємо ID користувача з Telegram WebApp
-        const user = tele.initDataUnsafe?.user;
-        const chatId = user ? user.id : '';
-
-        // 2. Додаємо chat_id до посилання (замінюємо /webhook/ на /form/ для краси)
-        let finalUrl = url.replace('/webhook/', '/form/');
+        // 1. Отримуємо дані користувача
+        const webAppData = window.Telegram.WebApp.initDataUnsafe;
         
-        if (chatId) {
-            // Перевіряємо, чи в посиланні вже є параметри
-            finalUrl += (finalUrl.includes('?') ? '&' : '?') + 'chat_id=' + chatId;
+        // Пріоритет: спочатку шукаємо чистий user.id
+        let chatId = '';
+        
+        if (webAppData && webAppData.user && webAppData.user.id) {
+            chatId = webAppData.user.id;
+        } 
+        // Якщо раптом id немає в user, але є в іншому місці (залежить від версії API)
+        else if (webAppData && webAppData.receiver && webAppData.receiver.id) {
+            chatId = webAppData.receiver.id;
         }
 
+        // 2. Формуємо URL
+        // Використовуємо URLSearchParams для надійності, щоб параметри не дублювалися
+        let baseUrl = url.replace('/webhook/', '/form/');
+        let urlObj = new URL(baseUrl);
+        
+        if (chatId) {
+            // Force toString(), щоб переконатися, що це рядок/число, а не об'єкт
+            urlObj.searchParams.set('chat_id', chatId.toString());
+        } else {
+            // Якщо ID не знайдено, можна передати '0' або 'unknown', 
+            // щоб у таблиці не було імені користувача замість ID
+            urlObj.searchParams.set('chat_id', 'no_id_found');
+        }
+
+        const finalUrl = urlObj.toString();
+
         // 3. Відкриваємо посилання
-        tele.openLink(finalUrl);
+        window.Telegram.WebApp.openLink(finalUrl);
     } else {
         console.error("Invalid URL");
     }
