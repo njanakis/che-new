@@ -137,29 +137,40 @@
     </div>
 </nav>
 
-<div class="ruta-container" style="position: relative; width: 100%; overflow: hidden;">
-    <img src="cheruta.jpg" alt="Червона Рута" style="width: 100%; display: block;">
+<div id="ruta-results-section" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: flex-start; max-width: 1200px; margin: 30px auto; padding: 20px; background: #f9f9f9; border-radius: 20px; box-shadow: inset 0 0 10px rgba(0,0,0,0.05);">
     
-  <div id="ruta-ui-layer" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; box-sizing: border-box; z-index: 100;">
-    
-    <div style="flex: 1; display: flex; justify-content: flex-start;">
-        <button onclick="window.open('polozhennya.pdf', '_blank')" 
-            style="background: #6c757d; border: none; color: white; padding: 8px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
-            ПОЛОЖЕННЯ
-        </button>
+    <div style="flex: 1; min-width: 300px; max-width: 500px;">
+        <div style="background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border: 1px solid #eee;">
+            <img src="cheruta.jpg" alt="Червона Рута Черкаси результати" style="width: 100%; border-radius: 10px; display: block; margin-bottom: 15px;">
+            <div style="text-align: center;">
+                <h2 style="margin: 0 0 10px 0; color: #2c3e50; font-size: 22px;">Конкурс відбувся!</h2>
+                <p style="font-size: 15px; color: #555; line-height: 1.5;">
+                    21 березня у Черкасах пройшов обласний відбір «Червоної рути». 
+                    Понад 50 учасників, неймовірна енергетика та нові імена української сцени!
+                </p>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+                    <button onclick="window.open('polozhennya.pdf', '_blank')" 
+                            style="background: #6c757d; border: none; color: white; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.3s;">
+                        АРХІВ ПОЛОЖЕННЯ
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="ruta-timer-display" style="display: flex; gap: 4px; color: #f1c40f; flex: 2; justify-content: center; font-family: monospace; font-size: 20px; font-weight: bold; text-shadow: 1px 1px 2px black;">
-        <span id="d-val">00</span>:<span id="h-val">00</span>:<span id="m-val">00</span>:<span id="s-val">00</span>
+    <div style="flex: 1; min-width: 320px; max-width: 500px;">
+        <div style="border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); background: #fff; border: 1px solid #eee;">
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fnarodocntcherkasy%2Fposts%2Fpfbid036jWuSmbHWfK9zZUqJJBfbgqJE5UYmoiBHSB8mWbb6vUmgohc7WpspdJJLGZpzTtdl&show_text=true&width=500" 
+                    width="100%" 
+                    height="730" 
+                    style="border:none; overflow:hidden;" 
+                    scrolling="no" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
+        </div>
     </div>
-
-    <div style="flex: 1; display: flex; justify-content: flex-end;">
-        <button onclick="goToGeneralForm('cheruta')" 
-            style="background: #ff4500; border: none; color: white; padding: 8px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 10px rgba(255,69,0,0.3);">
-            ЗАЯВКА
-        </button>
-    </div>
-</div>
 </div>
 
 <div id="map-section" class="contest-container" style="background: #fff;">
