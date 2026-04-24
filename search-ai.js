@@ -87,3 +87,86 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 });
+
+// Bandura
+const bandura = document.getElementById('bandura-ai');
+const bubble = document.getElementById('speech-bubble');
+
+// Функція для зміни стану Бандури
+function changeBanduraState(state) {
+    const path = 'assets/img/'; // шлях до ваших файлів
+    
+    switch(state) {
+        case 'listening':
+            bandura.src = `${path}bandura-listening.png`;
+            bubble.innerText = "Слухаю вас...";
+            break;
+        case 'thinking':
+            bandura.src = `${path}bandura-thinking.png`;
+            bubble.innerText = "Шукаю у базі даних...";
+            break;
+        case 'pointing':
+            bandura.src = `${path}bandura-pointing.png`;
+            bubble.innerText = "Ось що я знайшла!";
+            break;
+        default:
+            bandura.src = `${path}bandura-idle.png`;
+            bubble.innerText = "Запитай, я допоможу!";
+    }
+}
+
+// ПРИКЛАД ВИКОРИСТАННЯ В АЛГОРИТМІ:
+
+// 1. Коли користувач натиснув мікрофон
+function onMicrophoneClick() {
+    changeBanduraState('listening');
+    // ... логіка запису голосу
+}
+
+// 2. Коли запис закінчено і ми відправляємо запит в n8n
+async function performSearch(query) {
+    changeBanduraState('thinking');
+    
+    try {
+        const response = await fetch('https://n8n.narodocnt.online/webhook/search-ai', {
+            method: 'POST',
+            body: JSON.stringify({ query })
+        });
+        const data = await response.json();
+        
+        // 3. Коли отримали відповідь і показуємо результат
+        displayResult(data.output);
+        changeBanduraState('pointing');
+        
+        // Через 5 секунд повертаємо в режим очікування
+        setTimeout(() => changeBanduraState('idle'), 5000);
+        
+    } catch (error) {
+        changeBanduraState('idle');
+        bubble.innerText = "Ой, щось пішло не так...";
+    }
+}
+// Speach
+function speakResponse(text) {
+    // Перевіряємо, чи підтримує браузер синтез мовлення
+    if ('speechSynthesis' in window) {
+        // Зупиняємо попереднє мовлення, якщо воно ще триває
+        window.speechSynthesis.cancel();
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        
+        // Налаштування мови (українська)
+        utterance.lang = 'uk-UA'; 
+        
+        // Налаштування тембру
+        utterance.pitch = 1.2; // Трохи вищий голос, щоб був мультяшним
+        utterance.rate = 1.0;  // Швидкість мовлення
+        
+        // Коли Бандура починає говорити — можна додати анімацію рота (якщо буде)
+        utterance.onstart = () => {
+            console.log("Бандура почала говорити...");
+        };
+
+        window.speechSynthesis.speak(utterance);
+    }
+}
